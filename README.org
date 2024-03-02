@@ -1,0 +1,24 @@
+#+title: yadm.el
+#+author: Sean Farley
+
+=yadm.el= adds Emacs functionality to work with your [[https://yadm.io][yadm]] dotfiles. This package
+adds support for many packages ([[Http://magit.vc][Magit,]] [[https://projectile.mx][Projectile]], etc) by testing
+=default-directory= for being the user's home directory.
+
+* Usage
+Open your =yadm= dotfiles files simply by opening =~/=. You can add this to your
+known projects for convenience,
+
+#+begin_src emacs-lisp
+(add-to-list 'projectile-known-projects "~/")
+#+end_src
+
+* Backstory
+
+This project is a second attempt at getting yadm to work within the ecosystem of
+Emacs. Previously, it was implemented on top of [[http://www.gnu.org/software/tramp/][Tramp]] but that exposed many
+problems due to Tramp not being re-entrant. Running things like linting,
+spellcheck, magit, etc would lead to errors within Emacs.
+
+This package instead advises functions so that we can check if we're in the home
+directory or not.

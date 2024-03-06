@@ -1,0 +1,14 @@
+; -*- mode: emacs-lisp; lexical-binding: t; -*-
+(setf eldev-project-main-file "yadm.el")
+
+(eldev-use-package-archive 'gnu-elpa)
+(eldev-use-package-archive 'melpa)
+
+(eldev-use-plugin 'autoloads)
+
+(setq eldev-lint-default '(elisp))
+(setq eldev-lint-stop-mode 'linter)
+(setq sentence-end-double-space nil)
+
+(with-eval-after-load 'elisp-lint
+  (setf enable-local-variables :all))
